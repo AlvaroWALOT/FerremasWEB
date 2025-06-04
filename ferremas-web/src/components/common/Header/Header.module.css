@@ -1,376 +1,168 @@
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Variables de color */
+:root {
+  --primary: #E74C3C; /* Rojo ferretero */
+  --primary-dark: #C0392B;
+  --secondary: #F39C12; /* Naranja */
+  --background: #FFFFFF;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
-  }
-}
-
-/* Estructura principal */
+/* Estilos del header */
 .header {
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 12px 0;
+  background-color: var(--background);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: all 0.3s ease-in-out;
-  animation: fadeIn 0.5s ease-out;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 0.5rem 0;
 }
 
-.container {
-  width: 100%;
+.headerContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
-}
-
-.navWrapper {
+  padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 /* Logo y marca */
-.brand {
-  color: #E74C3C;
+.logoContainer {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.75rem;
+}
+
+.logoIcon {
+  font-size: 1.8rem;
+  color: var(--primary);
+}
+
+.brandName {
+  margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  position: relative;
-  transition: all 0.3s ease;
-  font-family: 'Arial Black', sans-serif;
-  text-transform: uppercase;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
 }
 
-.brand:hover {
-  color: #C0392B;
-  transform: scale(1.03);
-}
-
-.brand::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #E74C3C;
-  bottom: -4px;
-  left: 0;
-  transition: width 0.3s ease;
-}
-
-.brand:hover::after {
-  width: 100%;
-}
-
-.logo {
-  color: #E74C3C;
-  animation: pulse 2s infinite;
-  transition: transform 0.3s ease;
-  font-size: 1.8rem;
-}
-
-.brand:hover .logo {
-  transform: rotate(-15deg);
-}
-
-/* Navegación principal */
-.navMenu {
-  display: flex;
-}
-
+/* Navegación */
 .navList {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
-}
-
-.navItem {
-  margin: 0;
+  gap: 1.5rem;
 }
 
 .navLink {
-  color: #333333;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 4px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 0;
   position: relative;
-  font-size: 0.95rem;
-}
-
-.navLink::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(243, 156, 18, 0.2),
-    transparent
-  );
-  transition: left 0.5s ease;
+  transition: color 0.3s;
 }
 
 .navLink:hover {
-  background-color: rgba(243, 156, 18, 0.1);
-  transform: translateY(-2px);
-  color: #E74C3C;
+  color: var(--primary);
 }
 
-.navLink:hover::before {
-  left: 100%;
-}
-
-.activeNavLink {
-  background-color: #F39C12;
-  color: #FFF;
-  box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
-  font-weight: 700;
-}
-
-.navIcon {
-  margin-right: 8px;
-  font-size: 1.1rem;
-}
-
-/* Menú hamburguesa */
-.hamburger {
-  display: none;
-  background: transparent;
-  border: 1px solid #E74C3C;
-  border-radius: 4px;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 10;
-}
-
-.hamburger:hover {
-  background-color: rgba(231, 76, 60, 0.1);
-  transform: scale(1.05);
-}
-
-.hamburger:active {
-  transform: scale(0.95);
-}
-
-.hamburgerIcon {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: #E74C3C;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.hamburgerIcon::before,
-.hamburgerIcon::after {
-  content: "";
+.navLink::after {
+  content: '';
   position: absolute;
-  width: 24px;
-  height: 2px;
-  background-color: #E74C3C;
-  left: 0;
-  transition: all 0.3s ease;
-}
-
-.hamburgerIcon::before {
-  top: -6px;
-}
-
-.hamburgerIcon::after {
-  bottom: -6px;
-}
-
-.hamburger[aria-expanded="true"] .hamburgerIcon {
-  background-color: transparent;
-}
-
-.hamburger[aria-expanded="true"] .hamburgerIcon::before {
-  top: 0;
-  transform: rotate(45deg);
-}
-
-.hamburger[aria-expanded="true"] .hamburgerIcon::after {
   bottom: 0;
-  transform: rotate(-45deg);
-}
-
-/* Menú desplegable de productos */
-.specialtiesItem {
-  position: relative;
-}
-
-.chevron {
-  margin-left: 6px;
-  transition: transform 0.3s ease;
-  font-size: 0.8rem;
-}
-
-.specialtiesItem button[aria-expanded="true"] .chevron {
-  transform: rotate(180deg);
-}
-
-.subMenu {
-  position: absolute;
-  top: 100%;
   left: 0;
-  background-color: white;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 8px 0;
-  min-width: 220px;
-  z-index: 100;
-  animation: fadeIn 0.3s ease-out;
-  margin-top: 8px;
-  border-top: 2px solid #F39C12;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s;
 }
 
-.subNavLink {
-  display: block;
-  padding: 10px 16px;
-  color: #333;
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Carrito */
+.cartContainer {
+  margin-left: 1rem;
+}
+
+.cartLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   font-weight: 500;
+  transition: all 0.3s;
 }
 
-.subNavLink:hover {
-  background-color: rgba(243, 156, 18, 0.15);
-  color: #E74C3C;
-  padding-left: 20px;
+.cartLink:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
-/* Efecto de scroll */
-.header.scrolled {
-  padding: 8px 0;
-  background-color: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+.cartIcon {
+  font-size: 1.2rem;
 }
 
-.scrolled .brand {
-  font-size: 1.3rem;
+.cartText {
+  font-size: 0.95rem;
 }
 
-.scrolled .navLink,
-.scrolled .registerButton {
-  padding: 6px 14px;
-  font-size: 0.9rem;
+.cartBadge {
+  background-color: white;
+  color: var(--primary);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
 }
 
 /* Responsive */
-@media (max-width: 991px) {
-  .hamburger {
-    display: block;
-  }
-
-  .navMenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    padding: 20px;
+@media (max-width: 768px) {
+  .headerContainer {
     flex-direction: column;
-    width: 100%;
-    display: none;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.4s ease-in-out;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    border-top: 2px solid rgba(231, 76, 60, 0.2);
-  }
-
-  .showMenu {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    animation: fadeIn 0.4s ease-out;
+    padding: 1rem;
+    gap: 1rem;
   }
 
   .navList {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+    gap: 1rem;
   }
 
-  .navLink {
-    width: 100%;
-    text-align: left;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-    margin-top: 8px;
-    padding: 10px 15px;
-  }
-
-  .navLink:hover {
-    border-color: #F39C12;
-    transform: translateY(-2px);
-  }
-
-  .specialtiesItem {
-    width: 100%;
-  }
-
-  .subMenu {
-    position: static;
-    width: 100%;
-    box-shadow: none;
-    background-color: rgba(255, 255, 255, 0.9);
-    margin-top: 0;
-    padding: 0;
-    border-radius: 0;
-    border: none;
-    border-top: none;
-  }
-
-  .subNavLink {
-    padding: 12px 25px;
-    border-top: 1px solid rgba(231, 76, 60, 0.1);
+  .cartContainer {
+    margin-left: 0;
+    margin-top: 0.5rem;
   }
 }
 
-@media (max-width: 576px) {
-  .brand {
+@media (max-width: 480px) {
+  .navList {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  }
+
+  .brandName {
     font-size: 1.3rem;
   }
-  
-  .logo {
+
+  .logoIcon {
     font-size: 1.5rem;
   }
 }

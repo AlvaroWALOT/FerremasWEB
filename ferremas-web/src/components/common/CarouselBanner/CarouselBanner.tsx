@@ -17,7 +17,7 @@ const CarouselBanner = () => {
       description: "Atención médica veterinaria de calidad con un equipo profesional",
       buttonText: "Ver servicios veterinarios",
       theme: "veterinaria",
-      image: "/src/assets/images/ferreteria1.jpg",
+      image: "C:Users/CETECOM/Documents/GitHub/Ferremas/ferremas-web/src/assets/images/ferreteria1.jpg",
       alt: "Servicios Veterinarios",
       action: () => navigate("/services")
     },
