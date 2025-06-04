@@ -29,7 +29,7 @@ function App() {
         
         {/* Ruta de tienda */}
         <Route 
-          path="/tienda" 
+          path="/shop" 
           element={
             // <ProtectedRoute> // Descomentar cuando implementes autenticación
               <Shop />
